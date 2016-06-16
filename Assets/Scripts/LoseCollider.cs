@@ -3,11 +3,11 @@ using System.Collections;
 
 public class LoseCollider : MonoBehaviour {
 
-    public LevelManager levelManager;
+    private LevelManager levelManager;
 
 	void OnTriggerEnter2D(Collider2D trigger)
     {
-        Debug.Log("Trigger");
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
         levelManager.LoadLevel("Win");
     }
 

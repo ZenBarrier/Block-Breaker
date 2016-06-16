@@ -16,4 +16,9 @@ public class LevelManager : MonoBehaviour {
         Debug.Log("Quit requested!");
         Application.Quit(); //only works in PC build. Bad for mobiles
     }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

@@ -4,6 +4,7 @@ using System.Collections;
 public class Brick : MonoBehaviour {
     
     public Sprite[] hitSprite;
+    public AudioClip crack;
 
     public static int breakableCount = 0;
 
@@ -33,6 +34,7 @@ public class Brick : MonoBehaviour {
 
         if (isBreakable)
         {
+            AudioSource.PlayClipAtPoint(crack,this.transform.position);
             HandleHits();
         }
     }

@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour {
     {
         Debug.Log("Level loaded for: "+name);
         //Application.LoadLevel(name); //Depricated
+        Brick.breakableCount = 0;
         SceneManager.LoadScene(name);
     }
 
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour {
 
     public void LoadNextLevel()
     {
+        Brick.breakableCount = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

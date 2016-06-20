@@ -5,6 +5,7 @@ public class Brick : MonoBehaviour {
     
     public Sprite[] hitSprite;
     public AudioClip crack;
+    public GameObject smoke;
 
     public static int breakableCount = 0;
 
@@ -46,6 +47,7 @@ public class Brick : MonoBehaviour {
 
         if (timesHit >= maxHit)
         {
+            Instantiate(smoke, this.transform.position, Quaternion.identity);
             Destroy(gameObject);
             breakableCount--;
             levelManagager.BrickDestroyed();
@@ -62,6 +64,10 @@ public class Brick : MonoBehaviour {
         if (hitSprite[spriteIndex])
         {
             this.GetComponent<SpriteRenderer>().sprite = hitSprite[spriteIndex];
+        }
+        else
+        {
+            Debug.LogError("Brick Sprite Missing");
         }
     }
 }

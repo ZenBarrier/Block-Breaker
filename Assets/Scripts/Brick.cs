@@ -47,15 +47,21 @@ public class Brick : MonoBehaviour {
 
         if (timesHit >= maxHit)
         {
-            Instantiate(smoke, this.transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            PuffSmoke();
             breakableCount--;
             levelManagager.BrickDestroyed();
+            Destroy(gameObject);
         }
         else
         {
             LoadSprite();
         }
+    }
+
+    void PuffSmoke()
+    {
+        smoke.GetComponent<ParticleSystem>().startColor = this.GetComponent<SpriteRenderer>().color;
+        Instantiate(smoke, this.transform.position, Quaternion.identity);
     }
 
     void LoadSprite()
